@@ -22,7 +22,9 @@ public interface UsuarioDAO {
 	
 	public Usuario getUsuario(int id) throws PersistenceException;
 	
-	public Usuario validarUsuario(String password) throws PersistenceException;
+	public Usuario getUsuarioByUsername(String username) throws PersistenceException;
+	
+	public Usuario validarUsuario(String username, String password) throws PersistenceException;
 	
 	public void registrarUsuario(Usuario e) throws PersistenceException;
 	

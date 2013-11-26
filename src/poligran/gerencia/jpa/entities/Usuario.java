@@ -13,7 +13,8 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 	@NamedQuery(name="usuario.loadAll", query="SELECT u FROM Usuario u"),
 	@NamedQuery(name="usuario.loadByRol", query="SELECT u FROM Usuario u WHERE u.rol.id =:rol"),
-	@NamedQuery(name="usuario.searchByPassword", query="SELECT u FROM Usuario u WHERE u.password =:password")
+	@NamedQuery(name="usuario.validateUser", query="SELECT u FROM Usuario u WHERE u.username =:username AND u.password =:password"),
+	@NamedQuery(name="usuario.getByUsername", query="SELECT u FROM Usuario u WHERE u.username =:username")
 })
 public class Usuario {
 	
@@ -29,7 +30,7 @@ public class Usuario {
 	private boolean activo;
 	
 	@ManyToOne(targetEntity=Rol.class)
-	@JoinColumn(name="id")
+	@JoinColumn(name="rolID")
 	private Rol rol;
 	
 

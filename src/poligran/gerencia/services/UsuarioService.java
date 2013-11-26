@@ -11,7 +11,13 @@ public interface UsuarioService {
 	
 	public List<Usuario> listarUsuarios() throws Exception;
 	
-	public List<Usuario> registrarUsuario(String username, String password) throws Exception;
+	public Usuario registrarUsuario(String username, String password) throws Exception;
 	
-	public Usuario autenticar();
+	public void cambiarContrasena(String username, String password) throws Exception;
+	
+	public Usuario autenticar(String username, String password) throws Exception;
+	
+	public void desactivarUsuario(String username) throws Exception;
+	
+	public void activarUsuario(String username) throws Exception;
 }

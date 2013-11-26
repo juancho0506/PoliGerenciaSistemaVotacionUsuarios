@@ -62,11 +62,19 @@ public class DefaultUsuarioDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public Usuario validarUsuario(String password) throws PersistenceException {
-		Usuario u = null;
-		Query q = em.createNamedQuery("usuario.searchByPassword", Usuario.class);
+	public Usuario getUsuarioByUsername(String username)
+			throws PersistenceException {
+		Query q = em.createNamedQuery("usuario.getByUsername", Usuario.class);
+		q.setParameter("username", username);
+		return (Usuario) q.getSingleResult();
+	}
+
+	@Override
+	public Usuario validarUsuario(String username, String password) throws PersistenceException {
+		Query q = em.createNamedQuery("usuario.validateUser", Usuario.class);
+		q.setParameter("username", username);
 		q.setParameter("password", password);
-		return u;
+		return (Usuario) q.getSingleResult();
 	}
 
 	/* (non-Javadoc)
