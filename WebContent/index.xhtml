@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+	<title>Sistema de Votaciones - Módulo Usuarios</title>
+</h:head>
+<h:body>
+	<h1>Administración de Usuarios</h1><br/>
+ 	<div style="color:red"><h2>#{reserva.message}</h2></div>
+ 	<h:panelGrid>
+ 		<h2>Usuarios Registrados</h2>
+ 		<h:dataTable value="#{usuarioBean.usuarios}" var="u">
+	 
+	  			<h:column>
+	  				<!-- column header -->
+	  				<f:facet name="header">Username</f:facet>
+	  				<!-- row record -->
+	  				#{u.username}
+	  			</h:column>
+	
+	  			<h:column>
+	  				<f:facet name="header">Rol</f:facet>
+	  				#{u.rol.nombre}
+	  			</h:column>
+	
+	  			<h:column>
+	  				<f:facet name="header">Estado</f:facet>
+	  				#{u.estado}
+	  			</h:column>
+	 			<h:column>
+	  				<f:facet name="header">Acciones</f:facet>
+	  				
+					<h:commandLink action="#" value="Desactivar">
+					    <f:param name="id" value="#{u.username}" />
+					</h:commandLink>
+	  			</h:column>
+	    </h:dataTable>
+ 		 	
+ 	</h:panelGrid>
+	<h:form>
+	   <p:editor value="#{usuarioBean.value}" />
+	</h:form>
+ 
+</h:body>
+</html>

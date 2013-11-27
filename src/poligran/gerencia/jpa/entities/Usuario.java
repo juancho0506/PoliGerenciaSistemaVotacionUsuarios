@@ -57,4 +57,18 @@ public class Usuario {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+
+	/**
+	 * @return the rol
+	 */
+	public Rol getRol() {
+		return rol;
+	}
+
+	/**
+	 * @param rol the rol to set
+	 */
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 }
