@@ -78,7 +78,16 @@ public class DefaultUsuarioService implements UsuarioService {
 	public Usuario autenticar(String username, String password)
 			throws Exception {
 		
-		return usuarioDAO.validarUsuario(username, password);
+		Usuario user = null;
+		try {
+			user = usuarioDAO.validarUsuario(username, password);
+		} catch(javax.persistence.NoResultException e){ 
+			return null;
+		}catch (Exception e) {
+			throw e;
+		}
+				
+		return user;
 	}
 
 	/* (non-Javadoc)
